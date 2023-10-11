@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { API_Options, SearchData_URL } from '../utils/constant';
-import Details from './DetailsPage';
+import Details from './Shopping';
 
 
 const MainPage = () => {
