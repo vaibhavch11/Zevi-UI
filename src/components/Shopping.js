@@ -6,7 +6,9 @@ import { AiFillStar } from 'react-icons';
 const Shopping = () => {
 
   const [shoppingItems,setShoppingItems] = useState([]);
+  const [filterShoppingItems,setFilterShoppingItems] = useState([]);
   const [likes,setLikes] = useState({})
+
 
 
 
@@ -29,6 +31,7 @@ const Shopping = () => {
 
         let shoppingData = await addRating(json.results);
         setShoppingItems(shoppingData);
+        setFilterShoppingItems(shoppingData);
         
       }
   
@@ -73,12 +76,12 @@ const Shopping = () => {
               <div>Price Range</div>
                <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{
                 const priceFilter = shoppingItems.filter((res)=>(res.price.value < 50))
-                setShoppingItems(priceFilter)
+                setFilterShoppingItems(priceFilter)
                }} /><span>under $50 </span></label>
 
               <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{
                 const priceFilter = shoppingItems.filter((res)=>(res.price.value >= 50 && res.price.value <= 100))
-                setShoppingItems(priceFilter)
+                setFilterShoppingItems(priceFilter)
               }}/><span>$50 to $100</span>   </label>
             </div>
 
@@ -97,7 +100,7 @@ const Shopping = () => {
 
       <div className='col-span-6 '>
         <div className='flex flex-wrap'>
-          {shoppingItems.map((item) =>  (<div className='p-5 w-[25%] '>
+          {filterShoppingItems.map((item) =>  (<div className='p-5 w-[25%] '>
 
             <button className='w-[20px] h-[20px] absolute '
                onClick={() => handleToggleLike(item.code)}
