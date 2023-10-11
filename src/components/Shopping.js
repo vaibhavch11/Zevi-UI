@@ -1,11 +1,14 @@
 import React, { useEffect, useState } from 'react'
 import {Shopping_Options, Shopping_URL } from '../utils/constant';
 import SearchFilter from './SearchFilter';
+import { AiFillStar } from 'react-icons';
 
 const Shopping = () => {
 
   const [shoppingItems,setShoppingItems] = useState([]);
   const [likes,setLikes] = useState({})
+
+
 
   async function addRating(array){
 
@@ -48,6 +51,10 @@ const Shopping = () => {
       };
 
       const isLiked = (productId) => likes[productId];
+
+
+      //------------------------------
+
     
 
       if(shoppingItems.length == 0) return;
@@ -64,13 +71,20 @@ const Shopping = () => {
 
             <div className='flex flex-col mt-10'>
               <div>Price Range</div>
-               <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>$50 star</span></label>
-              <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>$50 to $100</span>   </label>
+               <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{
+                const priceFilter = shoppingItems.filter((res)=>(res.price.value < 50))
+                setShoppingItems(priceFilter)
+               }} /><span>under $50 </span></label>
+
+              <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{
+                const priceFilter = shoppingItems.filter((res)=>(res.price.value >= 50 && res.price.value <= 100))
+                setShoppingItems(priceFilter)
+              }}/><span>$50 to $100</span>   </label>
             </div>
 
           <div className='flex flex-col mt-10'>
             <div>Rating</div>
-            <label className='flex items-center space-x-2'> <input  value="test" type="checkbox" /><span>5 star</span></label>
+            <label className='flex items-center space-x-2'> <input  value="test" type="checkbox" /><span> star</span></label>
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>4 star</span></label>
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>3 star</span></label>
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>2 star</span></label>
@@ -92,7 +106,7 @@ const Shopping = () => {
             Like
           </button>
            
-            <img className="" src={item.allArticleBaseImages[0]} /> 
+            <img className="" src={item.allArticleBaseImages[0] }  /> 
             <p className='text-xl'>{item.name}</p>
             {/* <p>{item.brandName}</p> */}
             <p className='text-xl text-blue-700'>{item.price.formattedValue}</p>
