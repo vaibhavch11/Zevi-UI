@@ -6,6 +6,7 @@ import CardList from './CardList';
 const Shopping = () => {
 
   const [shoppingItems,setShoppingItems] = useState([]);
+  const [likes,setLikes] = useState({})
 
   async function addRating(array){
 
@@ -35,6 +36,21 @@ const Shopping = () => {
 
       console.log(shoppingItems)
 
+      const handleToggleLike = (productId) => {
+        setLikes((prevLikes) => {
+          if (prevLikes[productId]) {
+            const updatedLikes = { ...prevLikes };
+            delete updatedLikes[productId];
+            return updatedLikes;
+          } else {
+            return { ...prevLikes, [productId]: true };
+          }
+        });
+      };
+
+      const isLiked = (productId) => likes[productId];
+    
+
       if(shoppingItems.length == 0) return;
 
   return (
@@ -53,9 +69,16 @@ const Shopping = () => {
 
       <div className='col-span-7 '>
         <div className='flex flex-wrap'>
-          {shoppingItems.map((item) =>  (<div className='p-5'>
+          {shoppingItems.map((item) =>  (<div className='p-5 w-[25%] '>
+
+            <button className='w-[20px] h-[20px] absolute '
+               onClick={() => handleToggleLike(item.code)}
+               style={{ backgroundColor: isLiked(item.code) ? 'red' : 'white' }}
+          >
+            Like
+          </button>
            
-            <img src={item.allArticleBaseImages[0]} /> 
+            <img className="" src={item.allArticleBaseImages[0]} /> 
             <p>{item.brandName}</p>
             <p>{item.price.formattedValue}</p>
             <p>Rating: {item.rating}</p>
