@@ -33,7 +33,7 @@ const MainPage = () => {
 
     const [topFiveItems,setTopFiveItems] = useState({});
 
-    if(searchData.length == null ) return; 
+    if(searchData.length && topFiveItems == null ) return; 
 
   return (
     <div>
@@ -44,9 +44,7 @@ const MainPage = () => {
 
       <form className=' flex absolute bg-black w-1/2 p-12 my-36 mx-auto right-0 left-0 text-Black  bg-opacity-80 '>
             <input type='email' placeholder='What would you like to watch?' className='p-4  my-2 w-full rounded-l-lg bg-white' 
-             onFocus={()=> setShowSuggestions(true)}
-             onBlur={()=> setShowSuggestions(false)}
-
+             onClick={()=> setShowSuggestions(true)}
              />
             <button className='p-4 my-2 text-white  w-1/2 rounded-r-lg bg-red-600'>Search</button>
         </form>
