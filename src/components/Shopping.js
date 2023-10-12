@@ -5,6 +5,7 @@ import { AiFillStar } from 'react-icons';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faHeart } from '@fortawesome/free-solid-svg-icons';
+import ShoppingNavBar from './ShoppingNavBar';
 
 const Shopping = () => {
 
@@ -80,18 +81,35 @@ const Shopping = () => {
 
       if(shoppingItems.length == 0) return;
 
+      
+
   return (
-    <div className='grid grid-flow-col'>
+    <>
+    
+
+      <ShoppingNavBar />
+      <div className='grid grid-flow-col'>
 
       <div className='col-span-6 p-4'>
           
-          <h1>Search Result</h1>
+          <h1 className='text-3xl'>Search Result</h1>
 
           <div>
-            <div>Brand</div>
+
+          <div className='flex flex-col mt-10'>
+              <div className='text-2xl flex items-start py-2'>Brand</div>
+               <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{
+                const brandFilter = shoppingItems.filter((res)=>(res.brandName == "H&M"))
+                setFilterShoppingItems(brandFilter)
+               }} /><span>H&M</span></label>
+
+              
+            </div>
+
+
 
             <div className='flex flex-col mt-10'>
-              <div>Price Range</div>
+              <div className='text-2xl flex items-start py-2'>Price Range</div>
                <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{
                 const priceFilter = shoppingItems.filter((res)=>(res.price.value < 50))
                 setFilterShoppingItems(priceFilter)
@@ -104,16 +122,28 @@ const Shopping = () => {
             </div>
 
           <div className='flex flex-col mt-10'>
-            <div>Rating</div>
+            <div className='text-2xl flex items-start py-2'>Rating</div>
             <label className='flex items-center space-x-2'> <input  value="test" type="checkbox" onClick={()=>{  
               const fiveStar = shoppingItems.filter((res)=>(res.rating ==5));
               // console.log(fiveStar)
               setFilterShoppingItems(fiveStar)
             }} /><span>5 star</span></label>
-            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>4 star</span></label>
-            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>3 star</span></label>
-            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>2 star</span></label>
-            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>1 star</span></label>
+            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
+              const fourStar = shoppingItems.filter((res)=>(res.rating == 4));
+              setFilterShoppingItems(fourStar)
+            }} /><span>4 star</span></label>
+            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
+              const threeStar = shoppingItems.filter((res)=>(res.rating == 3));
+              setFilterShoppingItems(threeStar)
+            }} /><span>3 star</span></label>
+            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
+              const twoStar = shoppingItems.filter((res)=>(res.rating == 2));
+              setFilterShoppingItems(twoStar)
+            }}/><span>2 star</span></label>
+            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
+              const oneStar = shoppingItems.filter((res)=>(res.rating == 1));
+              setFilterShoppingItems(oneStar)
+            }}/><span>1 star</span></label>
           </div>
 
 
@@ -127,10 +157,10 @@ const Shopping = () => {
 
            
 
-          <div className='relative flex '>
+          <div className='relative flex justify-end '>
 
-          <button className='absolute pl-20% ' onClick={() => handleToggleLike(item?.code)}>
-              {isLiked(item?.code) ? <FontAwesomeIcon icon={faHeart} size='xl' className='text-red-600'/> : <FontAwesomeIcon icon={faHeart} style={{color: "#b4b8c0",}} size='xl' className=''/>}
+          <button className='absolute p-2 ' onClick={() => handleToggleLike(item?.code)}>
+              {isLiked(item?.code) ? <FontAwesomeIcon icon={faHeart} size='2xl' className='text-red-600'/> : <FontAwesomeIcon icon={faHeart} style={{color: "#b4b8c0",}} size='2xl' className=''/>}
             </button>
             <img className="" src={item?.allArticleBaseImages[0] }  /> 
 
@@ -158,6 +188,7 @@ const Shopping = () => {
       {/* <SearchFilter />
       <CardList /> */}
     </div>
+    </>
   )
 }
 

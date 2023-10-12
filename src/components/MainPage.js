@@ -22,7 +22,7 @@ const MainPage = () => {
       // console.log(searchData)
 
       //Taking top five category of Clothes
-      let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'Kids' || item.CatName == 'Sport'))
+      let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'H&M HOME' || item.CatName == 'Sport' || item.CatName == 'Beauty'))
       console.log("top Data",topData)
       setTopFiveItems(topData);
     }
@@ -55,7 +55,7 @@ const MainPage = () => {
         <div className='flex justify-center '>
         {
           showSuggestions && (
-            <div className=' absolute bg-white py-2 px-5 w-[65%] shadow-lg rounded-lg mt-64 pt-10 pb-10'>
+            <div className=' absolute bg-white py-2 px-5 w-[70%] shadow-lg rounded-lg mt-64 pt-10 pb-10'>
                
               <div className='flex flex-col items-start'>
 
@@ -64,7 +64,7 @@ const MainPage = () => {
               <div className='flex justify-between w-full'>
                 {topFiveItems.map((item)=>(
                   <Link to={"shopping/" + item.tagCodes}> 
-                   <div className='w-[200px] h-[235px] bg-slate-300 p-2 mx-1 bg-gradient-to-tr from-blue-500 text-2xl rounded-md shadow-md hover:to-sky-600 text-white text-center flex items-center justify-center '>
+                   <div className='w-[180px] h-[200px] bg-slate-300 p-2 mx-1 bg-gradient-to-tr from-blue-500 text-2xl rounded-md shadow-md hover:to-sky-600 text-white text-center flex items-center justify-center '>
                       {item.CatName}
                     </div>
                     </Link>
