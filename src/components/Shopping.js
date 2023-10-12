@@ -4,6 +4,7 @@ import SearchFilter from './SearchFilter';
 import { AiFillStar } from 'react-icons';
 import { useParams } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faHeart } from '@fortawesome/free-solid-svg-icons';
 
 const Shopping = () => {
 
@@ -104,7 +105,11 @@ const Shopping = () => {
 
           <div className='flex flex-col mt-10'>
             <div>Rating</div>
-            <label className='flex items-center space-x-2'> <input  value="test" type="checkbox" /><span> star</span></label>
+            <label className='flex items-center space-x-2'> <input  value="test" type="checkbox" onClick={()=>{  
+              const fiveStar = shoppingItems.filter((res)=>(res.rating ==5));
+              // console.log(fiveStar)
+              setFilterShoppingItems(fiveStar)
+            }} /><span>5 star</span></label>
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>4 star</span></label>
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>3 star</span></label>
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" /><span>2 star</span></label>
@@ -117,15 +122,23 @@ const Shopping = () => {
 
       <div className='col-span-6 '>
         <div className='flex flex-wrap'>
-          {filterShoppingItems.map((item) =>  (<div className='p-5 w-[25%] '>
+          {filterShoppingItems.map((item) =>  (
+           <div className='p-5 w-[25%] '>
 
-            <button className='absolute pl-[100px] ' onClick={() => handleToggleLike(item?.code)}>
-              {isLiked(item?.code) ? '❤️' : '🤍'}
-          </button>
+           
 
-          
-          
+          <div className='relative flex '>
+
+          <button className='absolute pl-20% ' onClick={() => handleToggleLike(item?.code)}>
+              {isLiked(item?.code) ? <FontAwesomeIcon icon={faHeart} size='xl' className='text-red-600'/> : <FontAwesomeIcon icon={faHeart} style={{color: "#b4b8c0",}} size='xl' className=''/>}
+            </button>
             <img className="" src={item?.allArticleBaseImages[0] }  /> 
+
+            <div className='flex absolute bottom-0 p-5 w-full h-[10%] bg-cyan-500 text-white justify-center items-center hover:cursor-pointer opacity-0 hover:opacity-70 text-xl'> View Product</div>
+          </div>
+           
+
+
             <p className='text-xl'>{item?.name}</p>
 
             <div className='flex justify-center'>
