@@ -22,7 +22,7 @@ const MainPage = () => {
       // console.log(searchData)
 
       //Taking top five category of Clothes
-      let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'H&M HOME' || item.CatName == 'Sport' || item.CatName == 'Beauty'))
+      let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'H&M HOME' || item.CatName == 'Sport' ))
       console.log("top Data",topData)
       setTopFiveItems(topData);
     }
@@ -71,7 +71,6 @@ const MainPage = () => {
                   ))
                 }
                 </div>
-
               </div>
 
 
