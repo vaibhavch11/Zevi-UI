@@ -20,22 +20,14 @@ const MainPage = () => {
 
       //Taking top five category of Clothes
       let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'Kids' || item.CatName == 'Sport'))
-      console.log("top Data",topData)
+      // console.log("top Data",topData)
       setTopFiveItems(topData);
-
-      
     }
 
     useEffect(()=>{
       searchDataCollections()
       
     },[])
-
-    //top five data from json data.
-
-    // console.log(searchData)
-
-    
 
     if(searchData.length && topFiveItems.length == null ) return; 
 
@@ -56,17 +48,26 @@ const MainPage = () => {
         <div className='flex justify-center '>
         {
           showSuggestions && (
-            <div className=' absolute bg-white py-2 px-5 w-[60%] shadow-lg rounded-lg mt-80 '>
+            <div className=' absolute bg-white py-2 px-5 w-[60%] shadow-lg rounded-lg mt-80 pt-10 pb-10'>
               
-              <div className='flex justify-between'>
+              <div className='flex '>
 
-                {/* {searchData.slice(0,5).map((li)=>(<div className='w-[200px] h-[150px] bg-slate-300 mx-2'>{li.CatName}</div>))} */}
+                {topFiveItems.map((item)=>(<div className='w-[200px] h-[150px] bg-slate-300 mx-2 bg-gradient-to-tr from-blue-500 text-2xl '>{item.CatName}</div>))}
 
-                {topFiveItems.map((item)=>(<div className='w-[200px] h-[150px] bg-slate-300 mx-2'>{item.CatName}</div>))}
-                      
               </div>
 
-            </div>
+
+
+              <div className='flex flex-col items-start'>
+                  <h1 className='text-2xl mt-4 mb-4'>Popular Suggestions</h1>
+                        
+                  <div className='text-start'>
+
+                     {topFiveItems[0]?.CategoriesArray?.map((item)=> <div className='text-l p-1'>{item.CatName}</div>)}
+                  </div>
+                </div>
+                      
+            </div> 
           )
           
         }
