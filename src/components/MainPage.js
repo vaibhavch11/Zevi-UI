@@ -33,17 +33,7 @@ const MainPage = () => {
 
     const [topFiveItems,setTopFiveItems] = useState({});
 
-    if(searchData.length != null ){
-      
-    }
-
-   
-    
-      
-    
-
-    
-    
+    if(searchData.length == null ) return; 
 
   return (
     <div>
