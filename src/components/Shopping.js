@@ -3,6 +3,7 @@ import {Shopping_Options, Shopping_URL } from '../utils/constant';
 import SearchFilter from './SearchFilter';
 import { AiFillStar } from 'react-icons';
 import { useParams } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 
 const Shopping = () => {
 
@@ -118,16 +119,14 @@ const Shopping = () => {
         <div className='flex flex-wrap'>
           {filterShoppingItems.map((item) =>  (<div className='p-5 w-[25%] '>
 
-            <button className='w-[20px] h-[20px] absolute '
-               onClick={() => handleToggleLike(item?.code)}
-               style={{ backgroundColor: isLiked(item?.code) ? 'red' : 'white' }}
-          >
-            Like
+            <button className='absolute pl-[100px] ' onClick={() => handleToggleLike(item?.code)}>
+              {isLiked(item?.code) ? '❤️' : '🤍'}
           </button>
-           
+
+          
+          
             <img className="" src={item?.allArticleBaseImages[0] }  /> 
             <p className='text-xl'>{item?.name}</p>
-            {/* <p>{item.brandName}</p> */}
 
             <div className='flex justify-center'>
               <p className='text-xl text-blue-700 line-through px-4'>{item?.whitePrice?.formattedValue}</p>
@@ -137,7 +136,6 @@ const Shopping = () => {
             
 
             <p>{handleRatingStar(item.rating)}</p>
-            {/* <p>{item.title.substring(0,20)}..</p> */}
             
             </div>))}
         </div>
