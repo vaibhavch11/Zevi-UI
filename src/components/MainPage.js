@@ -7,33 +7,37 @@ const MainPage = () => {
 
     //show suggestion only while we are on input box
     const [showSuggestions, setShowSuggestions] = useState(false);
-    const [searchData,setSearchData] = useState({});
+    const [searchData,setSearchData] = useState([]);
+    const [topFiveItems,setTopFiveItems] = useState([]);
 
 
     const searchDataCollections = async() => {
       const data = await fetch(SearchData_URL,API_Options);
       const json = await data.json();
+      console.log(json)
       setSearchData(json);
+      // console.log(searchData)
 
       //Taking top five category of Clothes
-      const topData = searchData.filter((item)=> item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'Kids' || item.CatName == 'Sport')
+      let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'Kids' || item.CatName == 'Sport'))
       console.log("top Data",topData)
       setTopFiveItems(topData);
-      // console.log(json)
+
       
     }
 
     useEffect(()=>{
       searchDataCollections()
+      
     },[])
 
     //top five data from json data.
 
-    console.log(searchData)
+    // console.log(searchData)
 
-    const [topFiveItems,setTopFiveItems] = useState({});
+    
 
-    if(searchData.length && topFiveItems == null ) return; 
+    if(searchData.length && topFiveItems.length == null ) return; 
 
   return (
     <div>
