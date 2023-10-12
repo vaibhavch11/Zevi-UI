@@ -6,8 +6,8 @@ import Shopping from './components/Shopping';
 function App() {
   return (
     <div className="App">
-       {/* <MainPage /> */}
-       <Shopping />
+       <MainPage />
+       {/* <Shopping /> */}
     </div>
   );
 }
