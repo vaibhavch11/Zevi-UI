@@ -55,7 +55,7 @@ const MainPage = () => {
         <div className='flex justify-center '>
         {
           showSuggestions && (
-            <div className=' absolute bg-white py-2 px-5 w-[70%] shadow-lg rounded-lg mt-64 pt-10 pb-10'>
+            <div className=' absolute bg-white py-2 px-5 w-[75%] shadow-lg rounded-lg mt-64 pt-10 pb-10'>
                
               <div className='flex flex-col items-start'>
 
