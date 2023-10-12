@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { API_Options, SearchData_URL } from '../utils/constant';
 import Details from './Shopping';
+import { Link } from 'react-router-dom';
 
 
 const MainPage = () => {
@@ -52,7 +53,14 @@ const MainPage = () => {
               
               <div className='flex '>
 
-                {topFiveItems.map((item)=>(<div className='w-[200px] h-[150px] bg-slate-300 mx-2 bg-gradient-to-tr from-blue-500 text-2xl '>{item.CatName}</div>))}
+                {topFiveItems.map((item)=>(
+                  <Link to={"shopping/" + item.tagCodes}>
+                   <div className='w-[200px] h-[150px] bg-slate-300 mx-2 bg-gradient-to-tr from-blue-500 text-2xl '>
+                      {item.CatName}
+                    </div>
+                    </Link>
+                  ))
+                }
 
               </div>
 
