@@ -2,7 +2,7 @@ export const SearchData_URL = 'https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.c
 export const API_Options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '0647c6a7fdmsh1145dfe8ff827c3p198cd9jsn999ff72dded7',
+		'X-RapidAPI-Key': '9871fcbdccmsh55c3d3a9e245ee0p1bc378jsnc07f19f42703',
 		'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
 	}
 };
@@ -14,7 +14,8 @@ export const API_Options = {
 export const Shopping_Options = {
 	method: 'GET',
 	headers: {
-		'X-RapidAPI-Key': '0647c6a7fdmsh1145dfe8ff827c3p198cd9jsn999ff72dded7',
+		'X-RapidAPI-Key': '9871fcbdccmsh55c3d3a9e245ee0p1bc378jsnc07f19f42703',
 		'X-RapidAPI-Host': 'apidojo-hm-hennes-mauritz-v1.p.rapidapi.com'
 	}
 };
+
