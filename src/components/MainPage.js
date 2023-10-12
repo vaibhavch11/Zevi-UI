@@ -49,13 +49,13 @@ const MainPage = () => {
         <div className='flex justify-center '>
         {
           showSuggestions && (
-            <div className=' absolute bg-white py-2 px-5 w-[60%] shadow-lg rounded-lg mt-80 pt-10 pb-10'>
-              
-              <div className='flex '>
+            <div className=' absolute bg-white py-2 px-5 w-[65%] shadow-lg rounded-lg mt-80 pt-10 pb-10'>
+               
+              <div className='flex justify-between'>
 
                 {topFiveItems.map((item)=>(
-                  <Link to={"shopping/" + item.tagCodes[0]}>
-                   <div className='w-[200px] h-[150px] bg-slate-300 mx-2 bg-gradient-to-tr from-blue-500 text-2xl '>
+                  <Link to={"shopping/" + item.tagCodes}> 
+                   <div className='w-[200px] h-[150px] bg-slate-300 p-2 mx-1 bg-gradient-to-tr from-blue-500 text-2xl rounded-md shadow-md hover:to-sky-600 text-white text-center flex items-center justify-center'>
                       {item.CatName}
                     </div>
                     </Link>

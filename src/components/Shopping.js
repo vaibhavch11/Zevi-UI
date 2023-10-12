@@ -62,6 +62,16 @@ const Shopping = () => {
       const isLiked = (productId) => likes[productId];
 
 
+      //-------Handle Star Rating----------
+      const handleRatingStar = (rating) => {
+        let star = '';
+        for(let i = 0;i<rating;i++){
+           star +=  '⭐'
+        }
+          return star
+      }
+
+
       //------------------------------
 
     
@@ -109,17 +119,24 @@ const Shopping = () => {
           {filterShoppingItems.map((item) =>  (<div className='p-5 w-[25%] '>
 
             <button className='w-[20px] h-[20px] absolute '
-               onClick={() => handleToggleLike(item.code)}
-               style={{ backgroundColor: isLiked(item.code) ? 'red' : 'white' }}
+               onClick={() => handleToggleLike(item?.code)}
+               style={{ backgroundColor: isLiked(item?.code) ? 'red' : 'white' }}
           >
             Like
           </button>
            
-            <img className="" src={item.allArticleBaseImages[0] }  /> 
-            <p className='text-xl'>{item.name}</p>
+            <img className="" src={item?.allArticleBaseImages[0] }  /> 
+            <p className='text-xl'>{item?.name}</p>
             {/* <p>{item.brandName}</p> */}
-            <p className='text-xl text-blue-700'>{item.price.formattedValue}</p>
-            <p>Rating: {item.rating}</p>
+
+            <div className='flex justify-center'>
+              <p className='text-xl text-blue-700 line-through px-4'>{item?.whitePrice?.formattedValue}</p>
+              <p className='text-xl text-blue-700'>{item?.price?.formattedValue}</p>
+            </div>
+
+            
+
+            <p>{handleRatingStar(item.rating)}</p>
             {/* <p>{item.title.substring(0,20)}..</p> */}
             
             </div>))}
