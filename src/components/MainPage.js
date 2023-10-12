@@ -21,7 +21,7 @@ const MainPage = () => {
 
       //Taking top five category of Clothes
       let topData = json.filter((item)=> (item.CatName == 'Men' || item.CatName == 'Women' || item.CatName == 'Kids' || item.CatName == 'Sport'))
-      // console.log("top Data",topData)
+      console.log("top Data",topData)
       setTopFiveItems(topData);
     }
 
@@ -54,7 +54,7 @@ const MainPage = () => {
               <div className='flex '>
 
                 {topFiveItems.map((item)=>(
-                  <Link to={"shopping/" + item.tagCodes}>
+                  <Link to={"shopping/" + item.tagCodes[0]}>
                    <div className='w-[200px] h-[150px] bg-slate-300 mx-2 bg-gradient-to-tr from-blue-500 text-2xl '>
                       {item.CatName}
                     </div>

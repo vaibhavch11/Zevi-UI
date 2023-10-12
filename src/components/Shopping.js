@@ -2,15 +2,20 @@ import React, { useEffect, useState } from 'react'
 import {Shopping_Options, Shopping_URL } from '../utils/constant';
 import SearchFilter from './SearchFilter';
 import { AiFillStar } from 'react-icons';
+import { useParams } from 'react-router-dom';
 
 const Shopping = () => {
+
+
+  const {resId} = useParams();
+  console.log(resId)
 
   const [shoppingItems,setShoppingItems] = useState([]);
   const [filterShoppingItems,setFilterShoppingItems] = useState([]);
   const [likes,setLikes] = useState({})
 
 
-
+  
 
   async function addRating(array){
 
@@ -24,7 +29,8 @@ const Shopping = () => {
   }
 
     const searchDataCollections = async() => {
-        const data = await fetch('https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=30&categories=men_all&concepts=H%26M%20MAN',Shopping_Options);
+        const data = await fetch("https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=30&categories="+resId,Shopping_Options);
+        // const data = await fetch("https://apidojo-hm-hennes-mauritz-v1.p.rapidapi.com/products/list?country=us&lang=en&currentpage=0&pagesize=30&categories=ladies_all",Shopping_Options);
         const json = await data.json();
         // console.log(json?.response?.docs)
         console.log(json.results)
