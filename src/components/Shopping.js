@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import {Shopping_Options, Shopping_URL } from '../utils/constant';
+import {Shopping_Options, Shopping_URL, stars } from '../utils/constant';
 import SearchFilter from './SearchFilter';
 import { AiFillStar } from 'react-icons';
 import { useParams } from 'react-router-dom';
@@ -73,8 +73,6 @@ const Shopping = () => {
         }
           return star
       }
-
-
       //------------------------------
 
     
@@ -123,12 +121,19 @@ const Shopping = () => {
 
           <div className='flex flex-col mt-10'>
             <div className='text-2xl flex items-start py-2'>Rating</div>
-            <label className='flex items-center space-x-2'> <input  value="test" type="checkbox" onClick={()=>{  
-              const fiveStar = shoppingItems.filter((res)=>(res.rating ==5));
-              // console.log(fiveStar)
-              setFilterShoppingItems(fiveStar)
-            }} /><span>5 star</span></label>
-            <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
+
+
+
+            <div>{stars.map((li)=>( <label className='flex '> <input  value="test" type="checkbox" onChange={()=>{
+              const temp = shoppingItems.filter((res)=>(res.rating == li.value));
+              setFilterShoppingItems(temp)
+            }}/>
+             <span>{handleRatingStar(li.value)} </span></label>
+            ))}
+            </div>
+
+            
+            {/* <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
               const fourStar = shoppingItems.filter((res)=>(res.rating == 4));
               setFilterShoppingItems(fourStar)
             }} /><span>4 star</span></label>
@@ -143,7 +148,7 @@ const Shopping = () => {
             <label className='flex items-center space-x-2'> <input value="test" type="checkbox" onClick={()=>{  
               const oneStar = shoppingItems.filter((res)=>(res.rating == 1));
               setFilterShoppingItems(oneStar)
-            }}/><span>1 star</span></label>
+            }}/><span>1 star</span></label> */}
           </div>
 
 

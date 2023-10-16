@@ -20,3 +20,10 @@ export const Shopping_Options = {
 };
 
 
+export const stars = [{starName: "1", value : 1},
+{starName: "two", value : 2},
+{starName: "three", value : 3},
+{starName: "four", value : 4},
+{starName: "five", value : 5 }]
+
+
